@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :interests
   resources :cities
   resources :searches
-
+  resources :messages
+  resources :visits
 
 
   resources :conversations, only: [:create, :index] do
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     end
     resources :messages, only: [:create]
   end
-  resources :messages
+  
 
   resources :users, only: [:index, :show] do
     member do

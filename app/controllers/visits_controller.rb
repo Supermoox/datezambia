@@ -1,6 +1,5 @@
 class VisitsController < InheritedResources::Base
 
-
   def new
     @visit = Visit.new
   end
