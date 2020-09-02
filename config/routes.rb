@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :cities
   resources :searches
   resources :messages
-  resources :visits
 
 
   resources :conversations, only: [:create, :index] do
