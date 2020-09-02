@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Datezambia</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+	  <%= render 'layouts/header' %>
+
+
+    <div class="container">
+      <div class="row">
+        <%= render 'layouts/top_content' %>
+        <% flash.each do |name, msg| %>
+          <%= content_tag(:div, msg, class: "alert") %>
+        <% end %>
+        
+      </div>
+      
+      <div class="row">
+        <div class="col-md-9">
+          <%= yield %>
+        </div> 
+        <div class="col-md-3">
+          <%= render 'layouts/side_content' %>
+        </div>       
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+   
+  </body>
+</html>

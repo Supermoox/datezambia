@@ -1,0 +1,301 @@
+<div class="row user-header">
+  <div class="row">
+    <div class="cover">
+      <img src="<%= asset_path( 'bc.jpg' ) %>" />
+    </div>
+    <div class="col-md-4 profile-pic">
+      <% if @pictures.blank? && @profile_picture.blank? %>
+        <% if @user.sex == "female" %>
+          <img src="<%= asset_path( 'user_female.jpg' ) %>" />
+        <% else %>
+          <img src="<%= asset_path( 'user_male.jpg' ) %>" />
+        <% end %>
+      <% elsif !@profile_picture.blank? %>
+
+        <% @pictures.each do |picture| %>
+          <div class="column">
+            <img src="<%= @profile_picture.image %>" onclick="openModal();currentSlide(<%= @counter3 %>)" class="hover-shadow cursor">
+            <% @counter3 = @counter3 + 1 %>
+          </div>
+        <% end %>
+
+      <% elsif !@pictures.blank? %>
+          <% @pictures.each do |picture| %>
+            <div class="column">
+              <img src="<%= @profile_picture_alt.image %>" onclick="openModal();currentSlide(<%= @counter4 %>)" class="hover-shadow cursor">
+              <% @counter4 = @counter4 + 1 %>
+            </div>
+          <% end %>
+      <% end %>
+    </div> 
+
+
+
+    <div class="col-md-8 profile-menu">
+      <div class="row profile-menu-inside">
+        <div class="row user-info">
+          <p>
+            <span style="font-size: x-large; margin-right: 10px;"><%= @user.username %></span>,
+            <span style="font-size: 14px;"> <%= @user.city.name%> </span>,
+            <span style="font-size: 14px;"> <%= @age.to_s %> years old</span>
+          </p>    
+        </div>
+        <div class="row user-info">
+
+
+
+          <div class="col-md-6 big_tab">
+            <% if @online %>    
+              <span style="margin-left: 10px; margin-top: 10px; color: white; background-color:#32CD32; padding: 5px; 
+                border-radius: 18px;"> Online 
+              </span> 
+            <% else %>
+              <span style="margin-left: 10px; color: white; background-color:#D3D3D3; padding: 5px; 
+                border-radius: 18px;"> Offline 
+              </span>
+            <% end %>
+            
+            <span style="margin-left: 40px;">
+            <% if @favourited.blank? %> 
+              <%= link_to add_favourite_user_path(@user), class: "favourite-btn",  method: :post, remote: :true do  %>  
+                <span style="font-size: large; border: 1px solid #ccc; padding: 5px;  padding-left: 10px;border-radius: 18px;">
+                  <i class="fa fa-heart" aria-hidden="true"></i>
+                </span>
+                <span style="font-size: 10px; color: grey; font-style: italic;">Add favourite?</span>
+                </span>
+              <% end %>
+            <% else %>
+              <%= link_to add_favourite_user_path(@user), class: "favourited-btn",  method: :post, remote: :true do  %>  
+                <span style="font-size: large; border: 1px solid #ccc; padding: 5px; padding-left: 10px; border-radius: 18px;">
+                  <i class="fa fa-heart" aria-hidden="true"></i>
+                </span>
+
+                <span style="font-size: 10px; color: grey; font-style: italic;">Remove favourite?</span>
+                </span>
+
+              <% end %>
+            <% end %>
+
+
+          </div>
+
+          <div class="col-xs-4 col-md-2 tab">
+            <div style="width: 50px; padding-bottom: 5px; border-top: 4px solid white;">
+              <strong style="color: grey;"><%= link_to "Profile",  user_path(@user) %></strong>
+            </div>
+
+          </div>
+          <div class="col-xs-4 col-md-2  tab">
+            <div style="width: 50px; padding-bottom: 5px; border-bottom: 2px solid #337ab7;">
+              <strong style="color: #337ab7;"> Photos </strong>
+            </div>      
+          </div>            
+           <div class="col-xs-4 col-md-2 tab">
+            <% unless current_user == @user %>               
+              <%= link_to conversations_path(user_id: @user), remote: true, method: :post do %>
+                <span class="btn btn-primary sms-btn">
+                  <ul>
+                    <li>
+                      <span style="font-size: 20px;">
+                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                      </span>
+                    </li>
+                  </ul>
+                </span>
+              <% end %>   
+            <% end %>   
+          </div> 
+        </div> 
+
+      </div>
+
+      <ul id="conversations-list">
+        <% @conversations.each do |conversation| %>
+          <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+        <% end %>
+      </ul>
+    </div>
+
+
+
+  </div>
+</div>
+
+<% if user_signed_in? && current_user == @user %>
+  <div class="row user-add-picture">
+    <h4> Add Photo </h4>
+    <%= render 'layouts/pic' %> 
+  </div>
+<% end %>
+
+<div class="row user-photos">
+  <% if @pictures.blank? %>
+    <p>No pictures added</p>  
+  <% else %>
+    <div class="row">
+      <% @pictures.each do |picture| %>
+        <div class="col-md-3">
+            <div class="thumbnail">
+              <img src="<%= picture.image %>" style="width:100%; height:250px;" onclick="openModal();currentSlide(<%= @counter %>)" class="hover-shadow cursor">
+              <% @counter = @counter + 1 %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="row row-lightbox">
+          <% @pictures.each do |picture| %>              
+            <div class="mySlides">
+
+              <div class="row picture_slideHeader">
+                <% if user_signed_in? && current_user == @user %>
+                  <p class="close cursor close_picture" onclick="closeModal()"><%= link_to "X", reset_picture_path(picture), 
+                      class: "btn-danger btn-xs pull-right ", remote: true, method: :post %> 
+                  </p>  
+                <% else %>
+                  <p class="close cursor close_picture" onclick="closeModal()"> 
+                    <%= link_to 'X', '#', class: "btn-danger btn-xs pull-right " , remote: true %>
+                  </p>
+                <% end %> 
+              </div>
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="numbertext"> <%= @counter2 %> / <%= @total_pics %></div>
+                  <%= image_tag picture.image.url(:medium) %>
+                  <% @counter2 = @counter2 + 1 %>
+                </div>
+                <div class="col-md-5 comment-col-md-5">
+                  <div class="row">
+                  <p>
+                      <%= link_to like_picture_path(picture.id), class: "like-btn",  method: :put, remote: :true do  %>  
+                          <span style="font-size: large;"><i class="fa fa-heart fa-x3"></i></span>
+                      <% end %>
+                      <span class="likes-count">( <%= picture.get_upvotes.size %> )</span>
+                   </p> 
+                  </div>
+                  <hr>
+                  <% picture.comments.each do |comment| %>
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <p id="user_avatar">
+
+                          <% if comment.user.pictures.blank?  %>
+                            <% if comment.user.sex == "female" %>
+                              <span> <img src="<%= asset_path( 'user_profile_f.png' ) %>" /></span>
+                            <% else %>
+                              <span><img src="<%= asset_path( 'user_profile_m.png' ) %>" /></span>
+                            <% end %>
+                          <% else %>
+                            <span>
+                              <%= link_to (image_tag(comment.user.pictures.last.image)), 
+                                  comment.user%>
+                            </span>
+                          <% end %>
+
+                        </p>
+                      </div>
+                      <div class="col-xs-9">
+                        <div id="comment">
+                          <%= comment.body %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                  <div id="write_comment">
+                    <%= form_for([picture, @comment]) do |form| %>
+                      <div class="field">
+                        <%= form.text_area :body, id: :comment_body,:placeholder =>"write a comment...", :required => true %>
+                      </div>
+                      <div class="actions">
+                        <input type="submit" name="commit" value="submit" data-disable-with="Create Comment">
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <span class="slide-control"><a class="prev" onclick="plusSlides(-1)">&#10094;</a></span>
+              <span class="slide-control"><a class="next" onclick="plusSlides(1)">&#10095;</a></span>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+</div>
+
+<div class="user-footer">
+</div>
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+$("myModal").modal({"backdrop": "static"});
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>

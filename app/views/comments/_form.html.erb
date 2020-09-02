@@ -1,0 +1,24 @@
+
+
+<%= form_for([@picture, @comment]) do |form| %>
+ 
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, id: :comment_body %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picture_id %>
+    <%= form.text_field :picture_id, id: :comment_picture_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :comment_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

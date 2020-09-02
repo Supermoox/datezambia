@@ -1,0 +1,25 @@
+
+<% @users.each do |user| %>
+  <div class="top-item">
+  <% if user.pictures.blank?  %>
+    <% if user.sex == "female" %>
+      <span> <img src="<%= asset_path( 'user_profile_f.png' ) %>" /></span>
+    <% else %>
+      <span><img src="<%= asset_path( 'user_profile_m.png' ) %>" /></span>
+    <% end %>
+  <% else %>
+    <span>
+      <%= link_to (image_tag(user.pictures.last.image)), user%>
+    </span>
+  <% end %>
+  </div>
+<% end %> 
+
+
+
+visit (
+
+  belongs_to :user
+  visitor_id :integer
+)
+

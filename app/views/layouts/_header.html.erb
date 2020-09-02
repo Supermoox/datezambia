@@ -1,0 +1,108 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+       
+      <%= link_to root_path do %>
+        <p id="logo">
+          <img src="<%= asset_path( 'logo.png' ) %>" />
+        </p>
+      <% end %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <% if user_signed_in? %>              
+          <li> 
+            <%= link_to  conversations_path do %>
+              <span class="fa-stack">
+                <% if  @unread_msg == 0 %>
+                   <span style="color:#337ab7;"><i class="fa fa-envelope fa-stack-2x"></i></span>
+                <% else %>
+                  <span style="color:#337ab7;"><i class="fa fa-envelope fa-stack-2x "></i></span>
+                <% end %> 
+                <span class="fa-stack-1x">
+                  <% unless @unread_msg == 0 %>
+                    <span class="label label-danger pull-right"><%= @unread_msg %> </span>
+                  <% end %>
+                </span>
+              </span>
+            <% end %>
+          </li>          
+
+          <li> 
+            <%= link_to  pages_notifications_path do %>
+              <span class="fa-stack">
+                <% if  @picture_notifications.count == 0 %>
+                   <span style="color:#337ab7;"><i class="fa fa-bell fa-stack-2x"></i></span>
+                <% else %>
+                  <span style="color:#337ab7;"><i class="fa fa-bell fa-stack-2x "></i></span>
+                <% end %> 
+                <span class="fa-stack-1x">
+                  <% unless @picture_notifications.count == 0 %>
+                    <span class="label label-danger pull-right"><%= @picture_notifications.count %> </span>
+                  <% end %>
+                </span>
+              </span>
+            <% end %>
+          </li>
+
+
+          <li> 
+            <%= link_to  pages_visitors_path do %>
+              <span class="fa-stack">
+                <% if  current_user.new_visitors == 0 %>
+                   <span style="color:#337ab7;"><i class="fa fa-eye fa-stack-2x"></i></span>
+                <% else %>
+                  <span style="color:#337ab7;"><i class="fa fa-eye fa-stack-2x "></i></span>
+                <% end %> 
+                <span class="fa-stack-1x">
+                  <% unless current_user.new_visitors == 0 %>
+                    <span class="label label-danger pull-right"><%= current_user.new_visitors %> </span>
+                  <% end %>
+                </span>
+              </span>
+            <% end %>
+          </li>
+
+
+
+          <li> 
+            <%= link_to current_user do %>
+              <span id="user_avatar">
+                <% if current_user.pictures.blank?  %>
+                  <% if current_user.sex == "female" %>
+                    <span> <img src="<%= asset_path( 'user_female.jpg' ) %>" /></span>
+                  <% else %>
+                    <span><img src="<%= asset_path( 'user_male.jpg' ) %>" /></span>
+                  <% end %>
+                <% else %>
+                  <span>
+                    <%= image_tag current_user.pictures.last.image %>
+                  </span>
+                <% end %>
+              </span>
+            <% end %>            
+
+          </li>
+
+
+          <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path, class: "active" %></li>
+          <li><%= link_to "Sign In", new_user_session_path, class: "active" %></li>
+        <% end %>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+

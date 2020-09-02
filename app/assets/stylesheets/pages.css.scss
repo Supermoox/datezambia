@@ -1,0 +1,181 @@
+div.top-users {
+  overflow: auto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-top: 4px solid orangered;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+div.top-users::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+div.top-users {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.top-item{
+	width: 100px;
+	height: 100px;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+.top-users img{
+  width: 100%;
+  height: 100px;
+}
+
+.leble-hide{
+	width: 150px;
+	background-color: white;
+	color: black;
+	margin-top: 10px;
+	text-align: left;
+	height: 150px;
+	padding: 5px;
+	padding-bottom: 10px;
+	border: 1px solid #ccc;
+
+}
+.user_name {
+  display: block;
+  width: 140px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.top-item .leble-hide{
+	  visibility: hidden;
+}
+
+.top-item:hover .leble-hide{
+	   visibility: visible;
+}
+.search_section{
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+.filter_header{
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.search_item{
+  margin: 10px;
+  text-align: center;
+}
+
+.search_submit{
+  margin-top: 20px;
+  text-align: right;
+}
+
+
+
+
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: white;
+
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: black transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent black transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Status_tabs{
+  padding-bottom: 20px;
+  color: grey;
+}
+.Status_tabs_active{
+  background-color: white;
+  padding: 10px;
+  border-radius: 18px;
+  border: 1px solid #ccc;
+}
+.right_menu{
+  padding-left: 40px;
+  font-weight: bold;
+}
+.right_menu_orange{
+  text-align: center;
+  font-weight: bold;
+}
+.right_menu_orange a{
+  color: white;
+}
+.favourite-btn{
+  color: pink;
+}
+.favourited-btn{
+  color: red;
+}
+
+.unliked{
+  color: grey;
+}
+.made-favourite{
+  color: red;
+}

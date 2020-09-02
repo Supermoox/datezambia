@@ -1,0 +1,8 @@
+$('#conversations-list').find("[data-conversation-id='" + "<%= @conversation.id %>" + "']").parent().remove();
+
+
+<% if @conversation.messages.where(read: false).where.not(user_id: current_user.id).count == 0 %>
+	$('.mark-read').addClass('read');
+<% else %>
+	$('.mark-read').html("<%= @conversation.messages.where(read: false).where.not(user_id: current_user.id).count %>"); 
+<% end %>

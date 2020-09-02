@@ -1,0 +1,8 @@
+
+	 
+<% if Favourite.where(host_id: @user.id).where(user_id: current_user.id).last.nil? %>
+	$('.favourited-btn').removeClass('favourited');
+<% else %>
+	$('.favourite-btn').addClass('favourited');
+<% end %>
+	$('.made-favourite').html("(<%= current_user.favourites.count %>)");

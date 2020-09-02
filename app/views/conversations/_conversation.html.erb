@@ -1,0 +1,50 @@
+<li>
+  <div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
+    
+    <div class="panel-heading">   
+      <div class="row">
+        <p class="close close_conversation" onclick="closeModal()"><%= link_to "X", close_conversation_path(conversation), class: "btn btn-danger btn-xs pull-right", remote: true, method: :post %> 
+        </p> 
+
+
+      </div>  
+
+      <% if conversation.opposed_user(user).pictures.blank?  %>
+        <% if conversation.opposed_user(user).sex == "female" %>
+          <span class="profile_pic_small"><img src="<%= asset_path( 'user_profile_f.png' ) %>" /></span>
+        <% else %>
+          <span class="profile_pic_small"><img src="<%= asset_path( 'user_profile_m.png' ) %>" /></span>
+        <% end %>
+      <% else %>
+        <span class="profile_pic_small">
+          <%= link_to (image_tag(conversation.opposed_user(user).pictures.first.image)), 
+              conversation.opposed_user(user)%>
+        </span>
+      <% end %>
+      <span style="color: #1E90FF;"><%= link_to  conversation.opposed_user(user).username, conversation.opposed_user(user) %>
+      </span>  
+    </div>
+    
+    <div class="panel-body chat_panel_body" style="display: none;">
+      <div class="messages-list">
+        <ul>
+          <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
+        </ul>
+      </div>
+
+      <div style="background-color: #D9EDF7; border:1px solid #ccc;width: 100%; padding: 10px;">
+      <form class="new_message">
+        <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
+        <input name="user_id" type="hidden" value="<%= user.id %>">
+        <textarea name="body" class="form-control" placeholder="...Type here"></textarea>
+        <p style="text-align: right;">
+        <input type="submit" class="btn btn-success send_msg" value="Send">
+        </p>
+      </form>
+      </div>
+    </div>
+  </div>    
+</li>
+
+
+          

@@ -1,0 +1,705 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+
+span{
+  margin-left: 10px;
+}
+body{
+	background-color: #f8f8f8;
+}
+
+
+.row{
+	margin:0;
+}
+.col-xs-11{
+  padding: 0;
+}
+.col-md-7{
+  padding: 0;
+}
+.col-md-6{
+	padding: 0;
+}
+.col-md-8{
+  padding: 0;
+}
+.col-md-9{
+  padding: 0;
+}
+.col-md-1{
+    background-color: rgba(0, 0, 0, 0.4);;
+    height: 600px;
+}
+.col-md-3{
+  padding: 0;
+}
+
+.col-xs-6{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.wrapper{
+	background-color: #f8f8f8;
+}
+
+.page-header{
+	text-align: center;
+}
+
+#form-lebel{
+	margin-right: 100px;
+}
+
+#logo img{
+	margin-top: 10px;
+  margin-left: 10px;
+}
+.navbar-default {
+    background-color: white;
+}
+
+.navbar-nav{
+	float: right;
+}
+.navbar-default .navbar-nav > li > a{
+	color: red;
+	font-size: large;
+	font-style: bold;
+}
+.user-info{
+	margin-bottom: 10px;
+}
+.user-header{
+	margin-bottom: 20px;
+}
+
+.user_main{
+	margin-bottom: 200px;
+}
+.user-add-picture{
+	margin-bottom: 20px;
+}
+.user-profile-links a{
+	color: grey;
+}
+.pic-links a{
+	color: red;
+}
+h4{
+	color: #1E90FF;
+}
+#change-profile-pic{
+
+	margin-left: 30px;
+}
+#screen_header{
+  font-size: 18px;
+  margin-left: 10px;
+  color:white;
+}
+
+
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 74%;
+}
+
+/* The Close Button */
+.close {
+  color: black;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  margin-top: 4%;
+  margin-right: 3%;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.mySlides img{
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  max-height: 600px;
+
+}
+
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+#comment_body{
+  width: 100%;
+  border-radius: 18px;
+  padding-left: 5px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+
+
+
+
+@media only screen and (min-width: 600px) {
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 768px) {
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+
+
+.current_page {
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+ul {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+
+.messages-list {
+  max-height: 300px;
+  min-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.message-sent {
+  position: relative;
+  background-color: #90EE90;
+  border-color: #BCE8F1;
+  margin: 5px 20px;
+  padding: 10px;
+  float: right;
+  border-top-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 18px;
+  box-shadow:   2px 2px 2px #888888;
+}
+
+
+.message-received {
+  background-color: white;
+  border-color: #EEEEEE;
+  margin: 5px 20px;
+  padding: 10px;
+  float: left;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 18px;
+  box-shadow:   2px 2px 2px #888888;
+}
+.panel-body{
+  padding: 0;
+}
+.panel-default > .panel-heading {
+    color: #333333;
+    background-color: white; 
+    border: 1px solid #ccc;
+
+}
+
+.prof_pic_icon_small{
+  font-size: 40px;
+}
+.chat_panel_body{
+  background: url(/assets/chat_bg3.jpg);
+  padding: 0;
+}
+.form-control{
+
+  border-radius: 18px;
+}
+.send_msg{
+  border-radius: 18px;
+  margin-top: 20px;
+}
+.user_name {
+  color: red;
+}
+
+.panel {
+    margin-bottom: 10px; 
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary a{
+  color: white;
+}
+a:hover{
+  text-decoration: none;
+}
+.profile-menu img{
+  height: 40px;
+  width: 40px;
+}
+.sms-btn{
+  padding: 0;
+  padding-right: 5px;
+  width: 50px;
+}
+
+
+
+.openPostBox{
+  background-color: white;
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  margin-left: 0;
+  cursor: pointer;
+
+}
+.openPostBox_home{
+  width: 100%;
+  margin-left: 0;
+  cursor: pointer;
+  height: auto;
+}
+.submit-aspap-artical{
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+}
+.top-content-footer{
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding-top: 10px;
+}
+.top-content-footer2{
+  padding-top: 10px;
+}
+
+.col-md-6-directorate{
+  border-top: 1px solid #ccc;
+}
+
+#event_fade{
+  position: relative;
+  height: 5.8em; /* exactly three lines */
+  overflow: hidden;
+  font-size: small;
+}
+#slideshow { 
+    position: relative; 
+    width: 100%; 
+    height: 100px; 
+    padding: 5px; 
+}
+
+#slideshow > div { 
+  position: absolute; 
+  top: 10px; 
+  left: 10px; 
+  right: 10px; 
+  bottom: 10px; 
+}
+.dropdown-menu{
+  width: 500px;
+}
+#user_name_2{
+  color:#6495ED;
+}
+.write_botton_article{
+  background-color: #000080;
+  height: 70px;
+  padding-top: 20px;
+  text-align: center;
+}
+.write_botton_article a{
+  color: white;
+}
+.write_botton_article a:hover{
+  color: white;
+}
+.write_botton_journal{
+  background-color: #4169E1;
+  height: 70px;
+  padding-top: 20px;
+  text-align: center;
+}
+.write_botton_journal a{
+  color:white;
+}
+.write_botton_journal a:hover{
+  color:white;
+}
+.write_botton_post{
+  background-color: #1E90FF;
+  height: 70px;
+  padding-top: 20px;
+  text-align: center;
+}
+.write_botton_post a{
+  color: white;
+}.write_botton_post a:hover{
+  color: grey;
+}
+
+
+
+.conversation_modal img{
+  width: 40px;
+  height: 40px;
+}
+
+.close_conversation{
+  margin: 0;
+  opacity: unset;
+  margin-left: 20px;
+  position: relative;
+}
+.close_picture{
+  margin: 0;
+  opacity: unset;
+  margin-left: 20px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.model_conversation{
+  width: 90%;
+}
+.modal_picture {
+    width: 90%;
+}
+
+.show_unread{
+  padding: 0;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.unread_messages{
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 85%;
+    font-weight: normal;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.mark-read{
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 85%;
+    font-weight: normal;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.fa-stack-2x{
+  font-size: 1.5em;
+}
+.stack_white{
+  color: white;
+}
+.stack_blue{
+  color: #38678b;
+}
+.stack_blue:hover{
+  color: blue;
+}
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 60%;
+    font-weight: normal;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+a.liked{
+  color: red;
+}
+.edit_profile a{
+  color: grey;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: red;
+    font-size: small;
+}
+.read{
+    display: inline;
+    padding: unset;
+    font-size: 85%;
+    font-weight: normal;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    background-color: white;
+}
+
+.thumbnail .caption{
+  padding: 0;
+  padding-top: 10px;
+}
+
+.caption_name{
+  font-weight: bold;
+  display: block;
+  width: 115px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}
+.thumbnail_image{
+  overflow-y: hidden;
+}
+.col-xs-6 .thumbnail_image img{
+  height: auto;
+  width: 100%; 
+  height: 156px;
+
+}
+.col-md-4 .thumbnail_image img{
+  height: auto;
+  width: 100%; 
+  height: 156px;
+
+}
+.thumbnail-article{
+  padding: 4px;
+  background-color: #F5F5F5;
+  margin: 10px;
+  width: 100%;
+}
+
+.select-items div, .select-selected {
+    color: black;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-color: #ccc;
+    cursor: pointer;
+    user-select: none;
+}
+
+.slide-control a{
+  background-color: rgba(0, 255, 0, 0.3);
+}
+.picture_slideHeader{
+  background-color: lightgrey;
+  border-bottom: 1px solid #ccc;
+}
+
+a.favourited{
+  color: red;
+}
+a.unfavourited{
+  color: pink;
+}
+.big_tab{
+  padding-top: 20px;
+}

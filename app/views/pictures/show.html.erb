@@ -1,0 +1,16 @@
+<h1>
+ <%= link_to like_picture_path(@picture), class: "like-btn",  method: :put, remote: :true do  %>  
+		 <div>
+		 	<span><p><i class="fa fa-heart fa-x3"></i> </p></span>
+		 </div>
+ <% end %>
+ <span class="likes-count"> <%= @picture.get_upvotes.size %> </span>
+</h1>
+<p>
+  <strong>Profile pic:</strong>
+  <%= image_tag @picture.image %>
+</p>
+
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>

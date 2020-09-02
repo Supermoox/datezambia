@@ -1,0 +1,141 @@
+<h2 class="page-header">Sign up</h2>
+<div class="user_registration">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <h4 class="subtitle">Basic Info</h4>
+    <div class="row profile_info">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3">
+            <span id="form-lebel"><%= f.label :username %><span>
+          </div>
+          <div class="col-md-9">
+            <span><%= f.text_field :username %></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3">
+            <span id="form-lebel"><%= f.label :email %><span>
+          </div>
+          <div class="col-md-9">
+            <span><%= f.text_field :email %></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">       
+        <div class="row">
+          <div class="col-md-3">
+            <span id="form-lebel"><%= f.label :sex %><span>
+          </div>
+          <div class="col-md-9">
+            <span><%=  f.collection_select :sex, User.sexes.map{ |a| [a.first,a.first] },  :first, :second %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3">
+            <span id="form-lebel"><%= f.label :Date_of_Birth %><span>
+          </div>
+          <div class="col-md-9">
+            <span><%= f.date_field :dob,  :required => true  %></span>
+          </div>
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3">
+            <span id="form-lebel"><%= f.label :Home_city %><span>
+          </div>
+          <div class="col-md-9">
+            <%= collection_select(:user, :city_id, City.all, :id, :name, :prompt => "Select City") %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3">
+            <span id="form-lebel"><%= f.label :height %><span>
+          </div>
+          <div class="col-md-9">
+            <span><%= number_field(:height, :discount, in: 50..300) %></span>
+            <span>cm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3">
+            <span id="form-lebel"><%= f.label :weight %><span>
+          </div>
+          <div class="col-md-9">
+            <span><%= number_field(:weight, :discount, in: 20..1000) %></span>
+            <span>kgs</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3">
+            <span id="form-lebel"><%= f.label :religion %><span>
+          </div>
+          <div class="col-md-9">
+            <span><%=  f.collection_select :religion, User.religions.map{ |a| [a.first,a.first] },  :first, :second %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subtitle">Interested In </h4>
+    <div class="row profile_info">
+      <div class="row-check-box">        
+          <span class="check_box"><%= f.check_box :interested_men %></span>  
+          <span id="form-lebel"><%= f.label :men %><span>        
+      </div>
+      <div class="row-check-box">
+          <span class="check_box"><%= f.check_box :interested_women %></span>
+          <span id="form-lebel"><%= f.label :women %><span>          
+      </div>
+    </div>
+    <h4 class="subtitle">Education </h4>
+    <div class="row profile_info">
+      <p><%=  f.collection_select :education, User.educations.map{ |a| [a.first,a.first] },  :first, :second %></p>
+    </div>
+     <h4 class="subtitle">Income </h4>
+    <div class="row profile_info">
+      <p><%=  f.collection_select :income, User.incomes.map{ |a| [a.first,a.first] },  :first, :second %></p>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
+
+<script type="text/javascript">
+  $('input[type="checkbox"]').on('change', function() {
+     $(this).siblings('input[type="checkbox"]').prop('checked', false);
+  });
+</script>
+

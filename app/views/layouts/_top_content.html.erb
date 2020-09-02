@@ -1,0 +1,30 @@
+  <div class="top-users">
+    <% @users.each do |user| %>
+
+      
+      <div class="top-item">
+        <%= link_to user do  %>
+          <% if user.pictures.blank?  %>
+            <% if user.sex == "female" %>
+              <img src="<%= asset_path( 'user_female.jpg' ) %>" />
+            <% else %>
+              <img src="<%= asset_path( 'user_male.jpg' ) %>" />
+            <% end %>
+          <% else %>
+
+              <%=  image_tag user.pictures.last.image %>
+
+          <% end %>
+        <% end %>
+        <p class="leble-hide">
+          <span class="user_name">
+            <%= user.username %>, 
+            <span style="font-size: 12px;"><%= ((Time.zone.now - user.dob.to_time) / 1.year.seconds).floor %> </span>
+          </span>
+          
+          <span style="color: grey; font-size: 12px;"><%= user.city.name %> </span>
+        </p>
+      </div>
+      
+    <% end %> 
+  </div>

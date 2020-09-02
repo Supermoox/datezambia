@@ -1,0 +1,67 @@
+<div class="Visitors_display">
+  <% if @history.blank? %>
+    <p style="text-align: center;font-size: 18px; margin-top: 20px;">Your history is empty</p>
+    <p style="text-align: center; font-size: 100px; color: grey;">
+      <i class="fa fa-file-o" aria-hidden="true"></i>
+    </p>
+  <% else %>
+
+    <p style="text-align: center; color: #337ab7; font-weight: bold; font-size: 18px;margin-bottom: 20px;">
+      Your History
+    </p>  
+    <% @history.each do |user| %>
+      <div class="row">
+        <div class="col-md-2"> 
+        </div>
+        <div class="col-md-4"> 
+          <p style="text-align: center; color: grey;">
+            You viewd this profile on <%= @visits.where(host_id: user.id).first.created_at.strftime("%b %d, %Y at %H:%M") %>
+          </p>
+        </div>          
+        <%= link_to user do  %>
+          <div class="col-sm-6 col-md-4 col-md-home">
+            <div class="thumbnail thumbnail_image">
+              <% if user.pictures.blank?  %>
+                <% if user.sex == "female" %>
+                  <img src="<%= asset_path( 'user_female.jpg' ) %>" />
+                <% else %>
+                  <img src="<%= asset_path( 'user_male.jpg' ) %>" />
+                <% end %>
+              <% else %>
+                <%=  image_tag user.pictures.last.image %>
+              <% end %>
+              <div class="caption">
+                <p class="caption_name"><%= user.username %></p>
+                <p style="font-size: 12px;">
+                  <span style="margin-left: 0;"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                  <%= user.city.name %>, <%= ((Time.zone.now - user.dob.to_time) / 1.year.seconds).floor %>yrs
+                </p>
+                
+                <% if user.last_seen_at > 5.minutes.ago %>    
+                  <p style="color: #32CD32; font-weight: bold; font-size: 12px; "> 
+                   <i class="fa fa-circle" aria-hidden="true"></i> Online 
+                  </p> 
+                <% else %>
+                  <% if user.last_seen_at > 60.minutes.ago && user.last_seen_at < 5.minutes.ago %>
+                    <p style="color: orange; font-size: 12px;"> 
+                      <i class="fa fa-circle" aria-hidden="true"></i> Offline 
+                    </p> 
+                  <% else %>
+                    <p style="color: grey; font-size: 12px;"> 
+                      <i class="fa fa-circle" aria-hidden="true"></i> Offline 
+                    </p>           
+                  <% end %>
+                <% end %>
+                
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-md-2"> 
+        </div>
+
+      </div>
+    <% end %>
+
+  <% end %>
+</div>
