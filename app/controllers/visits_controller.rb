@@ -1,4 +1,4 @@
-class VisitsController < InheritedResources::Base
+class VisitsController < ApplicationController
 
   def new
     @visit = Visit.new
