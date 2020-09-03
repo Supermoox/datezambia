@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:03d683e3eafea4de406d55a3f193a2c2@scat.redistogo.com:9482/
   channel_prefix: datezambia_production

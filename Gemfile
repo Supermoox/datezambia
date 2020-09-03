@@ -26,7 +26,7 @@ gem 'paperclip', '~> 5.1'
 gem 'paperclip', '~> 5.1'
 gem 'acts_as_votable'
 gem "font-awesome-rails"
-gem 'redis'
+#gem 'redis'
 gem 'will_paginate', '>= 3.1'
 
 
