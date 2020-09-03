@@ -352,6 +352,7 @@ ul {
   min-height: 200px;
   overflow-y: auto;
   overflow-x: hidden;
+  background: url(/assets/chat_bg3.jpg);
 }
 
 
@@ -393,10 +394,7 @@ ul {
 .prof_pic_icon_small{
   font-size: 40px;
 }
-.chat_panel_body{
-  background: url(/assets/chat_bg3.jpg);
-  padding: 0;
-}
+
 .form-control{
 
   border-radius: 18px;
