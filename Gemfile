@@ -23,11 +23,12 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-rails'
 gem 'paperclip', '~> 5.1'
-gem 'paperclip', '~> 5.1'
 gem 'acts_as_votable'
 gem "font-awesome-rails"
 gem 'redis'
 gem 'will_paginate', '>= 3.1'
+gem 'aws-sdk', '~> 2.3'
+gem 'figaro'
 
 
 
