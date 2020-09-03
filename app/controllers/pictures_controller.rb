@@ -11,6 +11,7 @@ class PicturesController < ApplicationController
     @comment = Comment.new
     @favourite = Favourite.new
     @pictures = Picture.where(user_id: @user.id)
+    @age =  ((Time.zone.now - @user.dob.to_time) / 1.year.seconds).floor
     @profile_picture = @pictures.where(profile_pic: true).last
     @profile_picture_alt = @pictures.last
     @total_pics = @pictures.count
@@ -97,8 +98,10 @@ class PicturesController < ApplicationController
   def destroy
     @user = @picture.user
     @picture.destroy
-    flash[:notice] = "photo deleted "
-    redirect_to user_pictures_path(@user)
+    respond_to do |format|
+      format.html { redirect_to user_pictures_path(@user), notice: 'Picture Deleted!' }
+      format.json { head :no_content }
+    end
   end
 
   private
