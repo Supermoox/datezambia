@@ -171,12 +171,12 @@
                 <% end %> 
               </div>
               <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-6">
                   <div class="numbertext"> <%= @counter2 %> / <%= @total_pics %></div>
                   <%= image_tag picture.image.url(:medium) %>
                   <% @counter2 = @counter2 + 1 %>
                 </div>
-                <div class="col-md-5 comment-col-md-5">
+                <div class="col-md-6 comment-col-md-5">
                   <div class="row">
                   <p>
                       <%= link_to like_picture_path(picture.id), class: "like-btn",  method: :put, remote: :true do  %>  

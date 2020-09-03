@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
  	protected
 
 	def configure_permitted_parameters 
-		devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :new_visitors, :interested_men, :interested_women, :sex, :city_id, :dob, :height, :weight, :education, :accommodation, :reason_friendship, :reason_penpal, :reason_marriage, :reason_romance, :reason_travel, :income, :email, :password, :password_confirmation, :remember_me) } 
+		devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :new_visitors, :interested_men, :interested_women, :sex, :city_id, :dob, :height, :weight, :education, :accommodation, :reason_friendship, :reason_penpal, :reason_marriage, :reason_romance, :reason_travel, :habit_smoking, :habit_drinking, :children, :children_num, :income, :email, :password, :password_confirmation, :remember_me) } 
 		devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:email, :password, :remember_me) } 
 		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :new_visitors, :interested_men, :interested_women, :sex, :city_id, :dob, :height, :weight, :education, :accommodation, :about_me, :reason_friendship, :reason_penpal, :reason_marriage, :reason_romance, :reason_travel, :income, :habit_smoking, :habit_drinking, :children, :children_num, :property_car, :property_house, :property_flat, :pet_dog, :pet_bird, :pet_cat, :pet_rabit, :religion, :tribe, :email, :password, :password_confirmation, :current_password) } 
 	end 
