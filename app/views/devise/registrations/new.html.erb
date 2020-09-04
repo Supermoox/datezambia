@@ -8,7 +8,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :username %><span>
+              <span id="form-lebel"><%= f.label :username %><span style="color: red;">*</span><span>
             </div>
             <div class="col-md-9">
               <span><%= f.text_field :username %></span>
@@ -18,7 +18,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :email %><span>
+              <span id="form-lebel"><%= f.label :email %><span><span style="color: red;">*</span>
             </div>
             <div class="col-md-9">
               <span><%= f.text_field :email %></span>
@@ -28,7 +28,7 @@
         <div class="form-group">       
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :sex %><span>
+              <span id="form-lebel"><%= f.label :sex %> <span style="color: red;">*</span><span>
             </div>
             <div class="col-md-9">
               <span><%=  f.collection_select :sex, User.sexes.map{ |a| [a.first,a.first] },  :first, :second %></span>
@@ -39,7 +39,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :Home_city %><span>
+              <span id="form-lebel"><%= f.label :Home_city %><span style="color: red;">*</span><span>
             </div>
             <div class="col-md-9">
               <%= collection_select(:user, :city_id, City.all, :id, :name, :prompt => "Select City") %>
@@ -50,7 +50,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :Date_of_Birth %><span>
+              <span id="form-lebel"><%= f.label :Date_of_Birth %><span style="color: red;">*</span><span>
             </div>
             <div class="col-md-9">
               <span><%= f.date_field :dob,  :required => true  %></span>
@@ -176,49 +176,49 @@
       </div>
 
 
-      <h4 class="subtitle">Habits </h4>
-      <div class="row profile_info">
-        <div class="row">
-          <div class="col-md-3">
-            <strong style="color: grey; font-style: italic;">Tick applicable</strong>
-          </div>
-          <div class="col-md-9">
-            <hr>
-            <p>        
-                <span class="check_box"><%= f.check_box :habit_drinking %></span>  
-                <span id="form-lebel"><%= f.label :Alcohol %><span>        
-            </p>
-            <p>
-                <span class="check_box"><%= f.check_box :habit_smoking %></span>
-                <span id="form-lebel"><%= f.label :Smoking %><span>          
-            </p>
-          </div>
+    <h4 class="subtitle">Habits </h4>
+    <div class="row profile_info">
+      <div class="row">
+        <div class="col-md-3">
+          <strong style="color: grey; font-style: italic;">Tick applicable</strong>
+        </div>
+        <div class="col-md-9">
+          <hr>
+          <p>        
+              <span class="check_box"><%= f.check_box :habit_drinking %></span>  
+              <span id="form-lebel"><%= f.label :Alcohol %><span>        
+          </p>
+          <p>
+              <span class="check_box"><%= f.check_box :habit_smoking %></span>
+              <span id="form-lebel"><%= f.label :Smoking %><span>          
+          </p>
         </div>
       </div>
-
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
     </div>
 
+    <h4 class="subtitle">Password </h4>
+    <div class="row profile_info">
+      <div class="form-group">
+        <p id="form-lebel"><span><%= f.label :password %></span><span style="color: red;">*</span><p/>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
 
 
+      <div class="form-group">
+        <%= f.label :password_confirmation %><span style="color: red;">*</span><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Sign up" %>
+    <div class="actions actions_registration">
+      <input type="submit" name="commit" value="Submit" id="register_button" data-disable-with="Sign up">
     </div>
+
   <% end %>
-
-  <%= render "devise/shared/links" %>
 </div>
 
 <script type="text/javascript">

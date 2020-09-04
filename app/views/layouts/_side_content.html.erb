@@ -78,12 +78,15 @@
 
 	</div>
 <% else %>
-	<div class="right_menu">
-		<div style="height: 100px; background-color: orangered; border-radius: 6px; padding: 20px;">
-			<p class="right_menu_orange">
-				<%= link_to 'Sign Up!', new_user_registration_path %>
-			</p>
-			<p style="font-size: 12px; color: lightgrey;text-align: center;">Your love is waiting for you here.</p>
+
+	<div class="side_menu">
+		<div class="side_bg">
+
 		</div>
+			<p class="fortext">
+				<span style="font-weight: bold;">Welcom!</span><span>Your love is waiting for you here.</span>
+				<span><%= link_to "Sign Up", new_user_registration_path %></span>
+			</p>
 	</div>
+
 <% end %>

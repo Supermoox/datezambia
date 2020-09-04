@@ -4,35 +4,37 @@
     Filter
   </p>
   <%= form_for  @search do |f| %> 
-    <div class="row">  
-      <div class="col-md-4 search_col_first">
-        <div class="search_item">
-          <p style="font-weight: bold"> City </p>
-          <div class="custom-select" style="width:100%;">
-            <%= f.collection_select :city_id, City.order(:name), :id, :name, :prompt => "Any City" %>
+    <div class="search_transparent">
+      <div class="row">  
+        <div class="col-md-4 search_col_first">
+          <div class="search_item">
+            <p style="font-weight: bold; color: white;"> City </p>
+            <div class="custom-select" style="width:100%;">
+              <%= f.collection_select :city_id, City.order(:name), :id, :name, :prompt => "Any City" %>
+            </div>
+          </div>               
+        </div> 
+        <div class="col-md-4">              
+          <div class="search_item">
+            <p style="font-weight: bold;  color: white;"> Sex </p>
+            <div class="custom-select" style="width:100%;">
+              <%=  f.collection_select :sex, User.sexes.map{ |a| [a.first,a.first] },  :first, :second %>
+            </div>
+          </div>              
+        </div> 
+        <div class="col-md-4">             
+          <div class="search_item">
+            <p style="font-weight: bold;  color: white;"> Religion </p>
+            <div class="custom-select" style="width:100%;">
+              <%=  f.collection_select :religion, User.religions.map{ |a| [a.first,a.first] },  :first, :second %>
+            </div>
+            <div class="search_submit">
+              <%= f.submit "Search", class: "btn btn-success" %>
+            </div>   
           </div>
-        </div>               
-      </div> 
-      <div class="col-md-4">              
-        <div class="search_item">
-          <p style="font-weight: bold"> Sex </p>
-          <div class="custom-select" style="width:100%;">
-            <%=  f.collection_select :sex, User.sexes.map{ |a| [a.first,a.first] },  :first, :second %>
-          </div>
-        </div>              
-      </div> 
-      <div class="col-md-4">             
-        <div class="search_item">
-          <p style="font-weight: bold"> Religion </p>
-          <div class="custom-select" style="width:100%;">
-            <%=  f.collection_select :religion, User.religions.map{ |a| [a.first,a.first] },  :first, :second %>
-          </div>
-          <div class="search_submit">
-            <%= f.submit "Search", class: "btn btn-success" %>
-          </div>   
-        </div>
 
-      </div>        
+        </div>        
+      </div> 
     </div> 
   <% end %>
 </div>

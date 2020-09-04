@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class="page-header">Edit Account</h2>
 <div class="user_registration">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
@@ -8,7 +8,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :username %><span>
+              <span id="form-lebel"><%= f.label :username %><span style="color: red;">*</span><span>
             </div>
             <div class="col-md-9">
               <span><%= f.text_field :username %></span>
@@ -18,7 +18,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :email %><span>
+              <span id="form-lebel"><%= f.label :email %><span><span style="color: red;">*</span>
             </div>
             <div class="col-md-9">
               <span><%= f.text_field :email %></span>
@@ -28,7 +28,7 @@
         <div class="form-group">       
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :sex %><span>
+              <span id="form-lebel"><%= f.label :sex %> <span style="color: red;">*</span><span>
             </div>
             <div class="col-md-9">
               <span><%=  f.collection_select :sex, User.sexes.map{ |a| [a.first,a.first] },  :first, :second %></span>
@@ -39,7 +39,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :Home_city %><span>
+              <span id="form-lebel"><%= f.label :Home_city %><span style="color: red;">*</span><span>
             </div>
             <div class="col-md-9">
               <%= collection_select(:user, :city_id, City.all, :id, :name, :prompt => "Select City") %>
@@ -50,7 +50,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <span id="form-lebel"><%= f.label :Date_of_Birth %><span>
+              <span id="form-lebel"><%= f.label :Date_of_Birth %><span style="color: red;">*</span><span>
             </div>
             <div class="col-md-9">
               <span><%= f.date_field :dob,  :required => true  %></span>
@@ -97,7 +97,7 @@
               <span id="form-lebel"><%= f.label :About_me %><span>
             </div>
             <div class="col-md-9">
-              <span><%=  f.text_area :about_me %></span>
+              <span><%=  f.text_area :about_me  %></span>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@
       <h4 class="subtitle">Education </h4>
       <div class="row profile_info">
         <p><%=  f.collection_select :education, User.educations.map{ |a| [a.first,a.first] },  :first, :second %></p>
-      </div>
+      </div>      
 
 
 
@@ -117,6 +117,11 @@
         <p><%=  f.collection_select :income, User.incomes.map{ |a| [a.first,a.first] },  :first, :second %></p>
       </div>
 
+
+      <h4 class="subtitle">Accommodation </h4>
+      <div class="row profile_info">
+        <p><%=  f.collection_select :accommodation, User.accommodations.map{ |a| [a.first,a.first] },  :first, :second %></p>
+      </div>
 
       <h4 class="subtitle">Dating </h4>
       <div class="row profile_info">
@@ -167,58 +172,66 @@
 
           </div>
         </div>
+
       </div>
 
-      <h4 class="subtitle">Habits </h4>
-      <div class="row profile_info">
-        <div class="row">
-          <div class="col-md-3">
-            <strong style="color: grey; font-style: italic;">Tick applicable</strong>
-          </div>
-          <div class="col-md-9">
-            <hr>
-            <p>        
-                <span class="check_box"><%= f.check_box :habit_drinking %></span>  
-                <span id="form-lebel"><%= f.label :Alcohol %><span>        
-            </p>
-            <p>
-                <span class="check_box"><%= f.check_box :habit_smoking %></span>
-                <span id="form-lebel"><%= f.label :Smoking %><span>          
-            </p>
-          </div>
+
+    <h4 class="subtitle">Habits </h4>
+    <div class="row profile_info">
+      <div class="row">
+        <div class="col-md-3">
+          <strong style="color: grey; font-style: italic;">Tick applicable</strong>
+        </div>
+        <div class="col-md-9">
+          <hr>
+          <p>        
+              <span class="check_box"><%= f.check_box :habit_drinking %></span>  
+              <span id="form-lebel"><%= f.label :Alcohol %><span>        
+          </p>
+          <p>
+              <span class="check_box"><%= f.check_box :habit_smoking %></span>
+              <span id="form-lebel"><%= f.label :Smoking %><span>          
+          </p>
         </div>
       </div>
+    </div>
 
-      <h4 class="subtitle">Accommodation </h4>
-      <div class="row profile_info">
-        <p><%=  f.collection_select :accommodation, User.accommodations.map{ |a| [a.first,a.first] },  :first, :second %></p>
+    <h4 class="subtitle">Password </h4>
+    <div class="row profile_info">
+      <div class="field">
+        <%= f.label :new_password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
       </div>
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
+
+      <div class="field">
+        <%= f.label :new_password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="field confirm_password">
+        <span><%= f.label :current_password %> <span style="color: red;">*</span></span><i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off" %>
+      </div>
+
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <div class="actions actions_registration">
+      <input type="submit" name="commit" value="Update" id="register_button" data-disable-with="Update">
     </div>
 
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p style="margin-top: 20px; color: grey;">Unhappy? <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 </div>
+
+<script type="text/javascript">
+  $('input[type="checkbox"]').on('change', function() {
+     $(this).siblings('input[type="checkbox"]').prop('checked', false);
+  });
+</script>
